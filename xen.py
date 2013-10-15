@@ -119,9 +119,6 @@ def main():
         "test05":"https://test016.sh",
         "test06":"https://test020.sh",
         "test07":"https://test039.sh",
-        "test08":"https://test044.sh",
-        "test09":"https://test047.sh",
-        "test10":"https://test021.sh",
     }
 
     pool_stored = OrderedDict(sorted(pool.items(), key=lambda t:t[0]))

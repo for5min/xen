@@ -2,37 +2,6 @@ import XenAPI
 import sys
 from ordereddict import OrderedDict
 
-def choose_pool():
-
-    """If new pool needs to add, the dict pool needs to update. If pool master had been switched,it has
-    to be modified as well"""
-
-
-    pool = ( ("CNSHHUB01","https://ecnshxen001.sh.cn.ao.ericsson.se"),
-             ("CNSHHUB02","https://ecnshxen006.sh.cn.ao.ericsson.se"),
-             ("CNSHHUB03","https://ecnshxen022.sh.cn.ao.ericsson.se"),
-             ("CNSHHUB04","https://ecnshxen027.sh.cn.ao.ericsson.se"),
-             ("CNSHHUB06","https://ecnshxen020.sh.cn.ao.ericsson.se"),
-             ("CNSHHUB07","https://ecnshxen039.sh.cn.ao.ericsson.se"),
-             ("CNSHHUB08","https://ecnshxen044.sh.cn.ao.ericsson.se"),
-             ("CNSHHUB09","https://ecnshxen047.sh.cn.ao.ericsson.se"),
-             ("CNSHHUB10","https://ecnshxen021.sh.cn.ao.ericsson.se")
-    )
-
-    pool_test = { "CNSHHUB01":"https://ecnshxen001.sh.cn.ao.ericsson.se",
-                   "CNSHHUB02":"https://ecnshxen006.sh.cn.ao.ericsson.se",
-                               }
-
-
-    #for i in range(len(pool)):
-    #    print ("{0} {1}".format(i+1, pool[i][0]))
-
-   ##pool_name=raw_input(">")
-   # url = pool[i][int(pool_name)-1]
-    #print url
-
-    for k,v in pool_test.items():
-        print k,v
 
 
 
@@ -110,7 +79,6 @@ def super_mode(sx):
 
 
 def main(sx):
-    #choose_pool()
     get_vm(sx)
     print ("Which action(start/shutdown/reboot/supermode) you want to take?")
     action = raw_input(">")

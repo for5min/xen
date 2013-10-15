@@ -1,12 +1,5 @@
 import XenAPI
 import sys
-from ordereddict import OrderedDict
-
-
-
-
-
-
 
 def get_vm(sx):
     vms = sx.VM.get_all()

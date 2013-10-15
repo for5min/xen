@@ -1,5 +1,6 @@
 import XenAPI
 import sys
+from collections import OrderedDict
 
 def get_vm(sx):
     vms = sx.VM.get_all()
@@ -77,7 +78,7 @@ def super_mode(sx):
         sys.exit(0)
 
 
-def main(sx):
+def select(sx):
     get_vm(sx)
     print ("Which action(start/shutdown/reboot/supermode) you want to take?")
     action = raw_input(">")
@@ -95,19 +96,57 @@ def main(sx):
 
     print("Your actions are token, Thanks for using the script")
 
+def main():
 
-
-if __name__ == "__main__":
-    if len(sys.argv) <> 4:
+    if len(sys.argv) <> 3:
         print ("Usage:")
-        print (sys.argv[0], "<url> <username> <password")
+        print (sys.argv[0], "<username> <password")
 
-    url = sys.argv[1]
-    username = sys.argv[2]
-    password = sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+
+
+    pool = {
+        "test01":"https://test001.sh",
+        "test02":"https://test006.sh",
+        "test03":"https://test022.sh",
+        "test04":"https://test027.sh",
+        "test05":"https://test016.sh",
+        "test06":"https://test020.sh",
+        "test07":"https://test039.sh",
+        "test08":"https://test044.sh",
+        "test09":"https://test047.sh",
+        "test10":"https://test021.sh",
+    }
+
+    pool_stored = OrderedDict(sorted(pool.items(), key=lambda t:t[0]))
+
+    number = 0
+
+    for k in pool_stored:
+        number = number + 1
+        print number, k
+    print("Which pool you want to connect?")
+    #print pool_stored.values()[2]
+    cn = raw_input(">")
+    if int(cn) > number:
+        sys.exit(1)
+    else:
+        i = int(cn) - 1
+        print (pool_stored.values()[i])
+        url = pool_stored.values()[i]
 
     print ("List of non-template VMs on {0}".format(url))
     session = XenAPI.Session(url)
     session.login_with_password(username,password)
-    main(session.xenapi)
+    sx = session.xenapi
+    select(sx)
+
     session.logout()
+
+
+
+
+if __name__ == "__main__":
+    main()
+

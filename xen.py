@@ -53,8 +53,9 @@ def reboot_vm(sx):
         sx.VM.hard_reboot(vm)
 
 def super_mode(sx):
-    print ("Holy! You are now in super mode, now one click to shutdown all VMs")
+    print ("Holy! You are now in super mode, now one click to shutdown all VMs and host.")
     vms = sx.VM.get_all()
+    hosts = sx.host.get_all()
     print ("Your really wanna do this?(Y/N)")
     answer = raw_input("Y/N>")
 
@@ -62,6 +63,11 @@ def super_mode(sx):
         for vm in vms:
              if not sx.VM.get_is_a_template(vm) and not sx.VM.get_is_control_domain(vm) and sx.VM.get_power_state(vm) == "Running":
                  sx.VM.hard_shutdown(vm)
+        print ("Job Done!")
+        # host shutdown function, not tested with shutdown sequence.
+        for host in hosts:
+            sx.host.disable(host)
+            sx.host.shutdown(host)
         print ("Job Done!")
     elif answer ==  "N" or answer == "NO" or answer == "No":
         print ("The answer is {0}".format(answer))

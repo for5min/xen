@@ -65,11 +65,16 @@ def super_mode(sx):
              if not sx.VM.get_is_a_template(vm) and not sx.VM.get_is_control_domain(vm) and sx.VM.get_power_state(vm) == "Running":
                  sx.VM.hard_shutdown(vm)
         print ("Job Done!")
-        # host shutdown function, not tested with shutdown sequence.
-        for host in hosts:
-            sx.host.disable(host)
-            sx.host.shutdown(host)
-        print ("Job Done!")
+        print ("Whether you want to shutdown the host? Y/N")
+        answer_host = raw_input("Y/N >")
+        if answer == "Y":
+            # host shutdown function, not tested with shutdown sequence.
+            for host in hosts:
+                sx.host.disable(host)
+                sx.host.shutdown(host)
+                print ("Job Done!")
+        else:
+            sys.exit(0)
     elif answer ==  "N" or answer == "NO" or answer == "No":
         print ("The answer is {0}".format(answer))
         sys.exit(0)
@@ -94,7 +99,7 @@ def select(sx):
         print("I don't understand your action!")
         main(sx)
 
-    print("Your actions are token, Thanks for using the script")
+    print("Your actions are token, Thanks for using the script!")
 
 def main():
 

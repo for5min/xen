@@ -129,7 +129,7 @@ def main():
         number = number + 1
         print number, k
     print("Which pool you want to connect?")
-    #print pool_stored.values()[2]
+    
     cn = raw_input(">")
     if int(cn) > number:
         sys.exit(1)

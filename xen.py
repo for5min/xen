@@ -60,14 +60,14 @@ def super_mode(sx):
     print ("Your really wanna do this?(Y/N)")
     answer = raw_input("Y/N>")
 
-    if answer == "Y" or answer == "Yes" or answer == "YES":
+    if answer == "Y" or answer == "Yes" or answer == "YES" or answer == "y":
         for vm in vms:
              if not sx.VM.get_is_a_template(vm) and not sx.VM.get_is_control_domain(vm) and sx.VM.get_power_state(vm) == "Running":
                  sx.VM.hard_shutdown(vm)
         print ("Job Done!")
         print ("Whether you want to shutdown the host? Y/N")
         answer_host = raw_input("Y/N >")
-        if answer == "Y":
+        if answer_host == "Y":
             # host shutdown function, not tested with shutdown sequence.
             for host in hosts:
                 sx.host.disable(host)
@@ -75,7 +75,7 @@ def super_mode(sx):
                 print ("Job Done!")
         else:
             sys.exit(0)
-    elif answer ==  "N" or answer == "NO" or answer == "No":
+    elif answer ==  "N" or answer == "NO" or answer == "No" or answer == "n":
         print ("The answer is {0}".format(answer))
         sys.exit(0)
     else:

@@ -110,7 +110,7 @@ def main():
     username = sys.argv[1]
     password = sys.argv[2]
 
-
+    #you can replace the pool variables if you have multiple pool needs to manage
     pool = {
         "test01":"https://test001.sh",
         "test02":"https://test006.sh",

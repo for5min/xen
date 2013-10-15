@@ -141,6 +141,8 @@ def main():
     print ("List of non-template VMs on {0}".format(url))
     session = XenAPI.Session(url)
     session.login_with_password(username,password)
+    
+    #don't know why select(session.xenapi) is not working...
     sx = session.xenapi
     select(sx)
 

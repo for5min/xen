@@ -93,7 +93,7 @@ def select(sx):
         shutdown_vm(sx)
     elif action == "reboot":
         reboot_vm(sx)
-    elif action == "super" or action == "supermode":
+    elif action in ( "super", "supermode" ):
         super_mode(sx)
     else:
         print("I don't understand your action!")

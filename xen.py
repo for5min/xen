@@ -60,7 +60,7 @@ def super_mode(sx):
     print ("Your really wanna do this?(Y/N)")
     answer = raw_input("Y/N>")
 
-    if answer == "Y" or answer == "Yes" or answer == "YES" or answer == "y":
+    if answer in ( "Y" , "Yes" , "YES" , "y"):
         for vm in vms:
              if not sx.VM.get_is_a_template(vm) and not sx.VM.get_is_control_domain(vm) and sx.VM.get_power_state(vm) == "Running":
                  sx.VM.hard_shutdown(vm)
@@ -75,7 +75,7 @@ def super_mode(sx):
                 print ("Job Done!")
         else:
             sys.exit(0)
-    elif answer ==  "N" or answer == "NO" or answer == "No" or answer == "n":
+    elif answer in ( "N" , "NO" , "No" , "n"):
         print ("The answer is {0}".format(answer))
         sys.exit(0)
     else:
